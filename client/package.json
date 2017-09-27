@@ -1,7 +1,7 @@
 {
-	"name": "MyTV",
+	"name": "MyTV Client",
 	"version": "0.0.1",
-	"description": "MyTV",
+	"description": "MyTV - Client",
 	"main": "app.js",
 	"scripts": {
 		"start": "node app.js",
