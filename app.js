@@ -31,9 +31,9 @@ app.get('/', function(request, response) {
 
 // Express app listens and serves the React app
 app.listen(PORT, function(error) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.info("App is listening on port %s. \nVisit http://localhost:%s/ in your browser.", PORT, PORT);
-  }
+	if(error) {
+		console.error(error);
+	} else {
+	console.info("App is listening on port %s. \nVisit http://localhost:%s/ in your browser.", PORT, PORT);
+	}
 });
