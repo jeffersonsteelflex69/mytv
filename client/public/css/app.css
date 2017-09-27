@@ -1,3 +1,25 @@
 body {
 	background: black;
 }
+
+#app {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: black;
+}
+
+video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	width: 1080px;
+	box-shadow: 0px 0px 500px rgba(255,255,255,0.75), 0px 0px 75px teal;
+	border: 5px solid rgba(255,255,255,0.10);
+	border-radius: 5px;
+}

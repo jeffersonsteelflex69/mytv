@@ -1,5 +1,5 @@
 {
-	"name": "MyTV Client",
+	"name": "MyTV-Client",
 	"version": "0.0.1",
 	"description": "MyTV - Client",
 	"main": "app.js",
