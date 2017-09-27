@@ -1,5 +1,11 @@
 body {
 	background: black;
+	font-family: "Roboto", sans-serif;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	max-height: 100%;
+	overflow: hidden;
 }
 
 #app {
@@ -11,6 +17,27 @@ body {
 	background: black;
 }
 
+#brand-container {
+	margin-top: 15px;
+	margin-bottom: 30px;
+}
+
+#brand {
+	color: white;
+	width: 100%;
+	font-weight: 600;
+	font-size: 52px;
+	text-align: center;
+}
+
+#slogan {
+	color: white;
+	text-size: 16px;
+	font-weight: 400;
+	text-align: center;
+	width: 100%;
+}
+
 video {
 	position: absolute;
 	top: 0;
@@ -19,7 +46,7 @@ video {
 	right: 0;
 	margin: auto;
 	width: 1080px;
-	box-shadow: 0px 0px 500px rgba(255,255,255,0.75), 0px 0px 75px teal;
+	box-shadow: 0px 0px 500px rgba(255,255,255,0.75), 0px 0px 75px grey;
 	border: 5px solid rgba(255,255,255,0.10);
 	border-radius: 5px;
 }
