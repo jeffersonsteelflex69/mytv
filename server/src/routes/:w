@@ -1,0 +1,24 @@
+import express from 'express';
+const router = express.Router();
+import AWS from 'aws-sdk';
+
+router.get('/', (req, res) => {
+	res.send("yo test");	
+});
+
+router.options('/', (req, res) => {
+	var origin = req.get('Origin');
+	// Check if origin is set
+	if(!origin){
+		res.sendStatus(404);
+		return;
+	}
+	// Check if method that is requested is in the methods hash set
+	var method = req.get('Access-Control-Request-Method');
+	res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
+	res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization");
+	res.header("Access-Control-Max-Age", 86400);
+	res.sendStatus(200);
+});
+
+module.exports = router;

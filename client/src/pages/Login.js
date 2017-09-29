@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class Login extends Component {
 	render(){
@@ -11,21 +12,21 @@ class Login extends Component {
 						</div>
 						<div className="login-text">MyTV</div>
 					</div>
-					<hr/>
-					<div>Login</div>
+					<div className="login-header">Login</div>
 					<div className="login-fields">
 						<div className="login-field">
 							<span>Email</span>
 							<input type="text" />
 						</div>
 						<div className="login-field">
-							<span>Email</span>
+							<span>Password</span>
 							<input type="text" />
 						</div>
 						<div className="login-submit">
 							<button>Log In</button>
 						</div>
 					</div>
+					<div className="login-home-link"><Link to="/">← Go back</Link></div>
 				</div>
 			</div>
 		);

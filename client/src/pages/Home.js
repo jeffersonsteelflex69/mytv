@@ -15,7 +15,7 @@ class Home extends Component {
 							<div className="brand-slogan">As seen on Shark Tank</div>
 							<div className="actions-container">
 								<div className="actions-register">
-									<Link to="/login">Register</Link>
+									<Link to="/register">Register</Link>
 								</div>
 								<div className="actions-login">
 									<Link to="/login">Login</Link>
