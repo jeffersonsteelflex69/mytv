@@ -1,0 +1,79 @@
+*
+  text-rendering: optimizeLegibility
+  box-sizing: border-box
+
+body
+  font-family: 'Roboto', sans-serif
+  font-size: 13px
+  background: black
+  font-weight: 400
+  padding: 0
+  margin: 0
+  overflow: hidden
+  position: relative
+  height: 100%
+  letter-spacing: -0.1px
+  line-height: 1.5
+  color: white
+
+html, body
+  -webkit-font-smoothing: auto
+  color: white
+
+body, #mytv, html
+  overflow: hidden !important
+  height: 100%
+  min-height: 100%
+
+#mytv
+  position: absolute
+  top: 0
+  bottom: 0
+  right: 0
+  left: 0
+
+.mytv-container
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+.home-background
+    position: absolute
+    background: url('/public/img/movie-background.png')
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    animation-name: pulseSlow
+    -webkit-animation-name: pulseSlow
+    animation-duration: 30s
+    -webkit-animation-duration: 30s
+    animation-iteration-count: infinite
+    -webkit-animation-iteration-count: infinite
+    animation-timing-function: linear
+    -webkit-animation-timing-function: linear
+
+.overlay
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    background: rgba(0,0,0,0.65)
+
+@keyframes pulseSlow
+  0%
+    transform: scale(1)
+    opacity: 1
+
+  50%
+    transform: scale(1.15)
+    opacity: .5
+
+  100%
+    transform: scale(1)
+    opacity: 1
+
+

@@ -25,7 +25,7 @@ app.use(morgan('dev'));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Handles and serves the React app
-app.get('/', function(request, response) {
+app.get('*', function(request, response) {
 	response.sendFile(__dirname + '/public/index.html')
 });
 
