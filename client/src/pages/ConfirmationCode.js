@@ -6,11 +6,9 @@ class ConfirmationCode extends Component {
 	componentDidMount(){
 		if(!Object.keys(this.props.location.query).length > 0)
 			return
-		let email = this.props.location.query["email"];
 		let code = this.props.location.query["code"];
-		if(typeof email == "undefined" || typeof code == "undefined")
+		if(typeof code == "undefined")
 			return
-		document.getElementById("email").value = email;
 		document.getElementById("code").value = code;
 	}
 

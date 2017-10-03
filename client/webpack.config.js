@@ -6,7 +6,10 @@ module.exports = {
 		'./src/index'
     ],
 	module: {
-        loaders: [{ 
+		loaders: [{
+			test: /\.json$/,
+			loader: 'json'
+		},{ 
 			test: /\.js?$/,
 			loader: 'babel',
 			query: {

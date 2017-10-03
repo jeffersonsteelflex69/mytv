@@ -7,9 +7,22 @@ import cors from './middleware/cors';
 
 import routes from './routes';
 
+const AWSCognito = require('amazon-cognito-identity-js');
+let ClientId = "2pr7esv3j45mdncji036h3rers";
+let UserPoolId = "us-west-2_gi5wmIvY0";
+let poolData = {
+	UserPoolId: UserPoolId,
+	ClientId: ClientId
+};
+let userPool = new AWSCognito.CognitoUserPool(poolData);	
+
 let app = express();
 let debug = Debug('MyTV:app');
 
+app.use((req, res, next) => {
+	res.locals.userPool = userPool;
+	next();
+});
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

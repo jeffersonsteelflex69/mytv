@@ -1,23 +1,13 @@
 import React, { Component } from 'react';
-import '../styles/app.sass';
+import AppContainer from '../containers/App';
 
 class App extends Component {
 	render(){
-		if(true){
-			return(
-				<div className="mytv-container">
-					<div className="home-background"></div>
-					<div className="overlay"></div>
-					{ this.props.children }
-				</div>
-			);
-		} else {
-			return(
-				<div className="mytv-container">
-					{ this.props.children }
-				</div>
-			);
-		}
+		return (
+			<AppContainer>
+				{ this.props.children }
+			</AppContainer>
+		);
 	}	
 }
 
