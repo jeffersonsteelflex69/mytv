@@ -8,7 +8,8 @@ class Home extends Component {
 
 	viewShow(e){
 		e.preventDefault();
-		this.context.router.push("/video");	
+		//this.context.router.push("/video");	
+		window.location.href = "/video";
 	}
 
 	getShowThumbnail(){
@@ -21,18 +22,6 @@ class Home extends Component {
 					alert(err);
 					return;
 				}
-				cognitoUser.getUserAttributes(function(err, result) {
-					if (err) {
-						alert(err);
-						return;
-					}
-					for (let i = 0; i < result.length; i++) {
-						if(result[i].getName() == "email"){
-							document.getElementById("username").innerHTML = result[i].getValue();	
-						}
-					}
-				});
-
 				let idp = {};
 				idp[userPoolURL] = session.getIdToken().getJwtToken();
 

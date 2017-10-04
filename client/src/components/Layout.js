@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Landing from './Landing';
+import Loading from './Loading';
 import Header from './Header';
 
 class Layout extends Component {
@@ -53,7 +54,8 @@ class Layout extends Component {
 		} else {
 			// Show authenticated pages
 			return(
-				<div className="mytv-containter">
+				<div className="mytv-container">
+					<Loading />
 					<Header {...this.props }/>	
 					{ this.props.children }
 				</div>
