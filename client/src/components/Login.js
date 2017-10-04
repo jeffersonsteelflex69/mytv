@@ -28,11 +28,11 @@ class Login extends Component {
 						<form onSubmit={this.loginUser.bind(this)}>
 							<div className="login-field">
 								<span>Email</span>
-								<input type="text" id="email" />
+								<input type="text" id="email" autoComplete="off"/>
 							</div>
 							<div className="login-field">
 								<span>Password</span>
-								<input type="password" id="password" />
+								<input type="password" id="password"/>
 							</div>
 							<div className="login-submit">
 								<input type="submit" onClick={this.loginUser.bind(this)}value="Log In" />

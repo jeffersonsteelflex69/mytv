@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Landing from '../pages/Home';
+import Landing from '../pages/Landing';
 import { setAuthenticated } from '../actions/app';
 
 export default function(ComposedComponent){
@@ -10,6 +10,7 @@ export default function(ComposedComponent){
 		}
 
 		componentWillMount(){
+			/*
 			let location = window.location.pathname;
 			console.log(location);
 			let self = this;
@@ -20,16 +21,17 @@ export default function(ComposedComponent){
 				return
 			} else {
 				if(location == "/"){
-					this.setAuthenticated(false);
 					return;	
 				}
 				if(!location == "/"){
 					self.context.router.push("/login");	
 				}
 			}	
+			*/
 		}
 		
 		componentWillUpdate(nextProps){
+			/*
 			let location = window.location.pathname;
 			let userPool = this.props.app.aws.cognito.userPool;
 			let cognitoUser = userPool.getCurrentUser();
@@ -38,18 +40,22 @@ export default function(ComposedComponent){
 			}
 			if(cognitoUser == null){
 				this.context.router.push("/login");			
-				this.setAuthenticated(false);
 			}
+			*/
 		}
 
 		render(){
 			if(this.props.app.isAuthenticated === false){
 				return (
-					<Landing { ...this.props } />
+					<ComposedComponent>
+						<Landing { ...this.props } />
+					</ComposedComponent>
 				);	
 			} else {
 				return (
-					<ComposedComponent { ...this.props } />
+					<ComposedComponent>
+						{ this.props.children }
+					</ComposedComponent>
 				);
 			}
 		}

@@ -7,15 +7,18 @@ const mapDispatchToProps = (dispatch) => {
 		registerUser: (userPool, email, password) => {
 			console.log(userPool, email, password);
 			userPool.signUp(email, password, [], null, function(err, result){
+				let error = document.getElementById("error");
 				if(err) {
-					let error = document.getElementById("error");
 					error.style.display = "block";
 					error.innerHTML = err.message;
 					return;
 				}
-				alert("Successfully registered your account.\nCheck your email to confirm your account.");
-				cognitoUser = result.user;
-				console.log('user name is ' + cognitoUser.getUsername());
+				error.style.display = "block";
+				error.style.color = "green";
+				error.innerHTML = "Successfully registered your account";
+				setTimeout(() => {
+					window.location.href = "/";	
+				}, 2000);	
 			});
 		}	
 	};

@@ -27,7 +27,7 @@ class Register extends Component {
 						<form onSubmit={this.registerUser.bind(this)}>
 							<div className="login-field">
 								<span>Email</span>
-								<input id="email" type="text" name="email" />
+								<input id="email" type="text" name="email" autoComplete="off"/>
 							</div>
 							<div className="login-field">
 								<span>Password</span>

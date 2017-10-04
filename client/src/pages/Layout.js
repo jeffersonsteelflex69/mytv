@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import LayoutContainer from '../containers/Layout';
 
 class Layout extends Component {
 	render() {
         return (
-            <div>
-                { this.props.children }
-            </div>
+			<LayoutContainer>
+				{ this.props.children }
+			</LayoutContainer>
 		);
     }
 };

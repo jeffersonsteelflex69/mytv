@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
+import TheaterContainer from '../containers/Theater';
 
-class Home extends Component {
+class Theater extends Component {
 	render(){
 		return (
-			<div id="theater">
-				<div id="brand-container">
-					<div id="brand">MyTV</div>
-				</div>
-				<video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" autoPlay muted></video>
-			</div>
+			<TheaterContainer { ...this.props } />
 		);
 	}
 }
 
-export default Home;
+export default Theater;

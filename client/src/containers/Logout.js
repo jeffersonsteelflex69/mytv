@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Home from '../components/Home';
+import Logout from '../components/Logout';
 
 function mapStateToProps(state, ownProps){
 	return {
@@ -8,4 +8,4 @@ function mapStateToProps(state, ownProps){
 	};
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Logout);

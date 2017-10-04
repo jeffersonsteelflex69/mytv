@@ -18,7 +18,6 @@ const mapDispatchToProps = (dispatch) => {
 			let cognitoUser = new CognitoUser(userData);
 			cognitoUser.authenticateUser(authDetails, {
 				onSuccess: function (result) {
-					alert("you are logged in");
 					window.location.href = "/";
 				},
 				onFailure: function(err) {

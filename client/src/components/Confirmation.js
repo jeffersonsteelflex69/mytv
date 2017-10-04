@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import api from '../lib/api';
 
-class ConfirmationCode extends Component {
+class Confirmation extends Component {
 	componentDidMount(){
 		if(!Object.keys(this.props.location.query).length > 0)
 			return
@@ -14,18 +14,10 @@ class ConfirmationCode extends Component {
 
 	confirmUser(e){
 		e.preventDefault();
-		let self = this;
+		let userPool = this.props.app.aws.cognito.userPool;
 		let email = document.getElementById("email").value;
 		let code = document.getElementById("code").value;
-		api.register.confirmUser(email, code).then((res) => {
-			alert("Successfully confirmed your account");
-			self.context.router.push('/');
-		}).catch((err) => {
-			let error = document.getElementById("error");
-			error.style.display = "block";
-			error.innerHTML = "Something went wrong";
-			console.log("Could not create account: ", err.response.data);	
-		});
+		this.props.confirmUser(userPool, email, code);
 	}
 
 	render(){
@@ -62,8 +54,4 @@ class ConfirmationCode extends Component {
 	}
 }
 
-ConfirmationCode.contextTypes = {
-    router: React.PropTypes.object.isRequired
-};
-
-export default ConfirmationCode;
+export default Confirmation;
