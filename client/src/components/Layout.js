@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Landing from './Landing';
+import Header from './Header';
 
 class Layout extends Component {
 	setAuthenticated(state){
@@ -31,6 +32,7 @@ class Layout extends Component {
 	render(){
 		if(this.props.app.isAuthenticated == false){
 			if(window.location.pathname == "/"){
+				// Show the landing page
 				return(
 					<div className="mytv-container">
 						<div className="home-background"></div>
@@ -39,6 +41,7 @@ class Layout extends Component {
 					</div>
 				);
 			} else {
+				// Show the login/register/confirmation page
 				return(
 					<div className="mytv-container">
 						<div className="home-background"></div>
@@ -48,8 +51,10 @@ class Layout extends Component {
 				);
 			}
 		} else {
+			// Show authenticated pages
 			return(
-				<div className="mytv-container">
+				<div className="mytv-containter">
+					<Header {...this.props }/>	
 					{ this.props.children }
 				</div>
 			);

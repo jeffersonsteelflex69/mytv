@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 class Landing extends Component {
 	render(){
 		return (
-			<div id="home">
-				<div className="home-container">
+			<div id="landing">
+				<div className="landing-container">
 					<div className="brand-container">
 						<div className="brand">
 							<div className="brand-logo">

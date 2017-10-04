@@ -1,0 +1,92 @@
+#header
+  height: 95px
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+  width: 100%
+  padding: 15px
+
+  .brand-container 
+    display: inline-block
+    position: relative
+    clear: both
+    transition: all 200ms ease-in-out
+    opacity: 0.65
+    cursor: pointer
+
+    .brand
+      float: left
+    
+      .brand-logo
+        display: inline-block
+
+        img
+          display: inline-block
+          height: 50px
+
+      .brand-text
+        display: inline-block
+        margin-left: 15px
+        color: white
+        font-weight: 600
+        font-size: 52px
+        line-height: 52px
+
+    &:hover
+      opacity: 0.95 !important
+
+  .user-container
+    display: inline-block
+    float: right
+    width: 250px
+    transition: all 200ms ease-in-out
+    opacity: 0.65
+    cursor: pointer
+    
+    .user-avatar
+      display: inline-block
+      position: relative
+      top: 0px
+      
+      img
+        position: relative
+        height: 55px
+        border-radius: 50%
+
+    .user-name
+      display: inline-block
+      position: relative
+      margin-left: 15px
+      top: -15px
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 150px;
+      
+      span
+        font-size: 16px
+        font-weight: 600
+        color: white
+    
+    &:hover
+      opacity: 0.95 !important
+
+  .signout
+    display: inline-block
+    float: right
+    position: relative
+    top: 0px
+    transition: all 200ms ease-in-out
+    opacity: 0.65
+    cursor: pointer
+    
+    span
+      i
+        font-size: 52px
+        line-height: 52px
+        color: white
+    
+    &:hover
+      opacity: 0.95 !important
+
