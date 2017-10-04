@@ -30,6 +30,7 @@ class Header extends Component {
 					alert(err);
 					return;
 				}
+				console.log(session);
 				cognitoUser.getUserAttributes(function(err, result) {
 					if (err) {
 						alert(err);

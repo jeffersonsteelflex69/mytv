@@ -16,13 +16,16 @@ class Theater extends Component {
 					</div>
 					<div className="theater">
 						<div className="theater-video">
-							<video src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_ide=164" autoPlay></video>
+							<video src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_ide=164" autoPlay muted></video>
 						</div>
 						<div className="theater-interaction-container">
 							<div className="theater-choices-container">
 								<div className="theater-choice">
 									<div className="theater-choice-thumbnail">
-										choice 1
+										<img src="/public/img/day1.jpg" alt="day1"/>
+									</div>
+									<div className="theater-choice-title">
+										Title
 									</div>
 								</div>
 							</div>
