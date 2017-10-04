@@ -1,32 +1,11 @@
 import React, { Component } from 'react';
+import { logoutUser } from '../utils/auth';
 
 class Theater extends Component {
 	logout(e){
 		e.preventDefault();
-		let self = this;	
-		let userPool = this.props.app.aws.cognito.userPool;
-		let cognitoUser = userPool.getCurrentUser();
-		
-		if (cognitoUser != null) {
-			cognitoUser.getSession(function(err, session) {
-				if (err) {
-					alert(err);
-					return;
-				}
-				if(session.isValid()){
-					cognitoUser.globalSignOut();
-					self.clearLocalStorage();
-					window.location.href = "/";
-				}
-			});
-		}
-		self.clearLocalStorage();
-		window.location.href = "/";
-	}
-
-	clearLocalStorage(){
-		localStorage.clear();	
-	}
+		logoutUser();
+	}	
 
 	render(){
 		return (
