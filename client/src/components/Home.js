@@ -54,6 +54,7 @@ class Home extends Component {
 	}
 
 	getShowThumbnail(){
+		/*
 		let creds = this.props.app.aws.cognito.credentials;
 		AWS.config.region = "us-west-2";
 		let s3 = new AWS.S3({
@@ -64,7 +65,7 @@ class Home extends Component {
 		s3.getSignedUrl('getObject', params, function(err, url){
 			if(err) return console.log(err, err.stack);
 			else document.getElementById("show-thumbnail").src = url;
-		});
+		});*/
 	}
 
 	render(){
@@ -80,7 +81,7 @@ class Home extends Component {
 								<div className="show-thumbnail-overlay">
 									<span className="show-thumbnail-overlay-button"><i className="fa fa-arrow-right"></i></span>	
 								</div>
-								<img id="show-thumbnail" src=""/>
+								<img id="show-thumbnail" src="/public/img/day1.jpg"/>
 							</div>
 							<div className="show-details">
 								<div className="show-title">
