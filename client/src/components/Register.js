@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 class Register extends Component {
@@ -45,7 +46,7 @@ class Register extends Component {
 }
 
 Register.contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: PropTypes.object.isRequired
 };
 
 export default Register;

@@ -4,7 +4,7 @@ class Loading extends Component {
 	componentDidMount(){
 		setTimeout(() => {
 			document.getElementById("loading").style.display = "none";	
-		}, 1000);	
+		}, 2000);	
 	}
 	render(){
 		return (

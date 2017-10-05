@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import api from '../lib/api';
 
@@ -53,5 +54,9 @@ class Confirmation extends Component {
 		);
 	}
 }
+
+Confirmation.contextTypes = {
+	router: PropTypes.object.isRequired
+};
 
 export default Confirmation;

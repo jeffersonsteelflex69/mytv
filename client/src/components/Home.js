@@ -1,59 +1,70 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AWS from 'aws-sdk';
 
 class Home extends Component {
-	componentDidMount(){
-		this.getShowThumbnail();	
+	checkHomeFolderExists(){
+		let creds = this.props.app.aws.cognito.credentials;
+		let cognitoUser = this.props.app.aws.cognito.cognitoUser;
+		AWS.config.region = "us-west-2";
+		let s3 = new AWS.S3({
+			credentials: creds,
+			region: "us-west-2"
+		});
+		let params = {Bucket: 'mytv-app', Key: ('stiched-folder/' + cognitoUser.getUsername() + "/").toString()};
+		s3.headObject(params, function(err, metaData){
+			if(err && err.code == "NotFound"){
+				s3.putObject({Bucket: "mytv-app", Key: ('stiched-folder/' + cognitoUser.getUsername() + "/").toString()}, function(err, data){
+					if(err) return console.log(err, err.stack);
+					else return console.log("Successfully created user folder", data);
+				});
+			} else {
+				s3.listObjects({Bucket: "mytv-app", Prefix: ("stiched-folder/" + cognitoUser.getUsername()).toString()}, function(err, data){
+					if(err) return console.log(err, err.stack);
+					if(data.Contents.length == 0) return console.log("nothing inside this folder");
+					let params = {Bucket: "mytv-app"};
+					params.Delete = {Objects:[]};
+
+					data.Contents.forEach(function(content){
+						params.Delete.Objects.push({Key: content.Key});	
+					});
+
+					s3.deleteObjects(params, function(err, data){
+						if(err) return console.log(err);
+						else return console.log("Emptied the user folder");	
+					});
+				});
+			}
+		});
 	}
 
 	viewShow(e){
 		e.preventDefault();
-		//this.context.router.push("/video");	
 		window.location.href = "/video";
 	}
 
+	componentWillReceiveProps(nextProps){
+		let self = this;
+		if(nextProps.app.aws.cognito.credentials != null){
+			setTimeout(function(){
+				self.getShowThumbnail();
+				self.checkHomeFolderExists();
+			}, 250);
+		}
+	}
+
 	getShowThumbnail(){
-		let userPool = this.props.app.aws.cognito.userPool;
-		let userPoolURL = this.props.app.aws.cognito.userPoolURL;
-		let cognitoUser = userPool.getCurrentUser();
-		if(cognitoUser != null) {
-			cognitoUser.getSession(function(err, session) {
-				if (err) {
-					alert(err);
-					return;
-				}
-				let idp = {};
-				idp[userPoolURL] = session.getIdToken().getJwtToken();
-
-				AWS.config.region = "us-west-2";
-				let creds = new AWS.CognitoIdentityCredentials({
-					IdentityPoolId: 'us-west-2:4720dfe6-8515-477e-97bd-7e3764154b84',
-					Logins : {
-						...idp
-					}
-				}, {
-					region: "us-west-2"	
-				});
-
-				creds.refresh(function(err, data){
-					if(err) console.log("yo", err, err.stack);
-					else {
-						let s3 = new AWS.S3({
-							credentials: creds,
-							region: "us-west-2"
-						});
-						let params = {Bucket: 'mytv-app', Key: 'show-thumbnails/techu-cohort-1-sfo.jpg'};
-						s3.getSignedUrl('getObject', params, function(err, url){
-							if(err) console.log(err, err.stack);
-							else {
-								console.log(url);
-								document.getElementById("show-thumbnail").src = url;
-							}
-						});
-					}
-				});
-			});
-		}	
+		let creds = this.props.app.aws.cognito.credentials;
+		AWS.config.region = "us-west-2";
+		let s3 = new AWS.S3({
+			credentials: creds,
+			region: "us-west-2"
+		});
+		let params = {Bucket: 'mytv-app', Key: 'show-thumbnails/day1.jpg'};
+		s3.getSignedUrl('getObject', params, function(err, url){
+			if(err) return console.log(err, err.stack);
+			else document.getElementById("show-thumbnail").src = url;
+		});
 	}
 
 	render(){
@@ -91,7 +102,7 @@ class Home extends Component {
 }
 
 Home.contextTypes = {
-	router: React.PropTypes.object.isRequired
+	router: PropTypes.object.isRequired
 };
 
 export default Home;
